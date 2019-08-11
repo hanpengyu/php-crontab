@@ -2,6 +2,8 @@
 
 class Worker
 {
+    const LOG_FILE = '/tmp/worker/worker.log';
+
     public function __construct()
     {
         global $argv;
@@ -14,12 +16,16 @@ class Worker
 
     public function runAction()
     {
-        echo 'this is default action.' . PHP_EOL;
+        $log = 'this is default action.' . PHP_EOL;
+        echo $log;
+        file_put_contents(self::LOG_FILE, $log, FILE_APPEND);
     }
 
     public function echoAction()
     {
-        echo 'this is echo Action.' . PHP_EOL;
+        $log = 'this is echo Action.' . PHP_EOL;
+        echo $log;
+        file_put_contents(self::LOG_FILE, $log, FILE_APPEND);
     }
 }
 

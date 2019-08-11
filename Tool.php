@@ -17,4 +17,24 @@ class Tool
         }
         return $pids;
     }
+
+    public static function checkCrontab()
+    {
+        return false;
+    }
+
+    public static function log($logList)
+    {
+        $logString = '[' . date('Y-m-d H:i:s') . ']';
+        if (is_array($logList)) {
+            foreach ($logList as $log) {
+                $logString .= '[' . $log . ']';
+            }
+        } else {
+            $logString .= '[' . $log . ']';
+        }
+        $logString = $logString . PHP_EOL;
+        file_put_contents('/tmp/monitor.log', $logString, FILE_APPEND);
+        return $logString;
+    }
 }
