@@ -11,6 +11,7 @@ class Monitor
 
     public function __construct($config)
     {
+        // todo 本身也要保持只有一个进程
         $this->crontabList = $config;
         $this->run();
     }
